@@ -8,49 +8,28 @@
 
 import Foundation
 
-protocol searchDelegate {
-    func delegateUserUrl()
-}
-
 
 class UserViewModel {
-
-    func urlSearch(withString: String) {
-        var url: String? = "https://api.github.com/users/\(withString)"
-
-            
-        let Ask = URLRequest(url: URL(string: url!)!)
-               print("my name is...", Ask)
-               URLSession.shared.dataTask(with: Ask) {(data, response,_ ) in
-                   guard let data = data else { print(response)
-                    return}
-                       let apiResponse = try? JSONDecoder().decode(User.self, from: data)
-                   print(apiResponse)
-                self.users = apiResponse
-                self.userArray.append((self.users)!)
-                }
-        
-               }
-           
-    
-    
     var searchItem: String? {
         didSet {
-            let messege = "messageeeee"
-            print(messege, searchItem)
-            getData {
-                DispatchQueue.main.async {
-                
-                }
+            let messege = "new value entered ->"
+            print(messege, searchItem!)
+            
+            if searchItem != nil {
+            url = "https://api.github.com/users/\(searchItem ?? "")"
+                userArray.removeAll()
+            print(url!)
             }
         }
     }
     
-  lazy var url: String? = "https://api.github.com/users/\(searchItem)"
+    var url: String?
+  
     var users: User?
     var userArray = [User]()
     
     func getData(session: Session = URLSession.shared, completion: (() -> Void)?) {
+        print(url!)
         guard let unwrappedURL = url,
     let url = URL(string: unwrappedURL)
     else {
@@ -58,12 +37,11 @@ class UserViewModel {
    return }
         print(url)
         session.getData(from: url) {[weak self]
-            (data,error) in defer { completion?() }
-            guard error != nil else { print("error", error)
-                return
-            }
+            (data,_) in defer { print(data!)
+                completion?() }
             guard let data = data,
-                let apiResponse = try? JSONDecoder().decode(User.self, from: data) else {return}
+                let apiResponse = try? JSONDecoder().decode(User.self, from: data) else { print("FAILED")
+                    return}
             print(apiResponse)
             self?.users = apiResponse
             self?.userArray.append((self?.users)!)

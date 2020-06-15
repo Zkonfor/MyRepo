@@ -12,8 +12,18 @@ import Foundation
 
 class ReposViewModel {
     var viewModel = UserViewModel()
-    
-   lazy var url: String? = "https://api.github.com/users//repos"
+    var searchItem: String? {
+          didSet {
+              let messege = "new value entered ->"
+              print(messege, searchItem!)
+              
+              if searchItem != nil {
+              url = "https://api.github.com/users/\(searchItem ?? "")/repos"
+              print(url!)
+              }
+          }
+      }
+    var url: String?
     
     var repos: [Repository] = []
   

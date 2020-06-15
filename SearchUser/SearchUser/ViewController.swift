@@ -15,31 +15,40 @@ class ViewController: UIViewController {
     @IBOutlet weak var userTableView: UITableView!
     @IBOutlet weak var searchUser: UISearchBar!
     var result: String?
+  
     
     var arrayOfResults = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        navigationItem.title = ViewController.searchItem
+        
         userTableView.dataSource = self
         userTableView.delegate = self
         userTableView.register(UserTableCell.userNib(), forCellReuseIdentifier: UserTableCell.userCellID)
         searchUser.delegate = self
+        
+    }
     
+    func session() {
         self.viewModel.getData {
-            DispatchQueue.main.async {
-                self.userTableView.reloadData()
-             }
-        }
+                  DispatchQueue.main.async {
+                      self.userTableView.reloadData()
+                  }
+              }
     }
 }
 
 extension ViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        viewModel.searchItem = searchText
-        viewModel.urlSearch(withString: searchText)
-        print("i'm here")
         
+        if searchUser != nil {
+            viewModel.searchItem = searchText
+            navigationItem.title = searchText
+           session()
+         
+        } else {
+            print("value is nil")
+        }
     }
 }
 
@@ -81,8 +90,6 @@ extension ViewController : UITableViewDelegate {
         self.navigationController?.pushViewController(detailVC, animated: true)
         
         }
-    
-    
  }
 
 

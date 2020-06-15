@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB7F707C24969BAC00BB9F8B /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7F707B24969BAC00BB9F8B /* WebViewController.swift */; };
 		EBD0FD46249190E80082D6FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD0FD45249190E80082D6FE /* AppDelegate.swift */; };
 		EBD0FD48249190E80082D6FE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD0FD47249190E80082D6FE /* SceneDelegate.swift */; };
 		EBD0FD4A249190E80082D6FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD0FD49249190E80082D6FE /* ViewController.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EB7F707B24969BAC00BB9F8B /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		EBD0FD42249190E80082D6FE /* SearchUser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBD0FD45249190E80082D6FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBD0FD47249190E80082D6FE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				EBD0FD47249190E80082D6FE /* SceneDelegate.swift */,
 				EBD0FD49249190E80082D6FE /* ViewController.swift */,
 				EBD0FD5E2491E47E0082D6FE /* DetailViewController.swift */,
+				EB7F707B24969BAC00BB9F8B /* WebViewController.swift */,
 				EBD0FD602491E6E20082D6FE /* ViewModel.swift */,
 				EBD0FD682492773D0082D6FE /* DetailViewModel.swift */,
 				EBD0FD622491E7360082D6FE /* DataModel.swift */,
@@ -175,6 +178,7 @@
 				EBD0FD6624926FDA0082D6FE /* ReposTableCell.swift in Sources */,
 				EBD0FD4A249190E80082D6FE /* ViewController.swift in Sources */,
 				EBD0FD5C2491C8030082D6FE /* UserTableCell.swift in Sources */,
+				EB7F707C24969BAC00BB9F8B /* WebViewController.swift in Sources */,
 				EBD0FD612491E6E20082D6FE /* ViewModel.swift in Sources */,
 				EBD0FD692492773D0082D6FE /* DetailViewModel.swift in Sources */,
 				EBD0FD5F2491E47E0082D6FE /* DetailViewController.swift in Sources */,

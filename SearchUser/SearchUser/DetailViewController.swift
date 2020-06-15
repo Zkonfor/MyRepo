@@ -16,25 +16,18 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var bio: UILabel!
     @IBOutlet weak var userInfo: UILabel!
-        @IBOutlet weak var searchRepo: UISearchBar!
-    @IBOutlet weak var repoTableView: UITableView!
+    @IBOutlet weak var searchRepo: UISearchBar!
+    @IBOutlet weak var reposTableView: UITableView!
     @IBOutlet weak var avatar: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationItem.title = "Welcome to \(user?.username ?? "")'s Repo"
         loadOutlets()
-//        navigationItem.title = "\(ViewController.searchItem!)'s Repos"
-        repoTableView.dataSource = self
-        repoTableView.delegate = self
-        repoTableView.register(ReposTableCell.reposNib(), forCellReuseIdentifier: ReposTableCell.reposCellID)
+        reposTableView.dataSource = self
+        reposTableView.delegate = self
+        reposTableView.register(ReposTableCell.reposNib(), forCellReuseIdentifier: ReposTableCell.reposCellID)
         searchRepo.delegate = self
-        
-        self.viewModel.getData {
-            DispatchQueue.main.async {
-                self.repoTableView.reloadData()
-            }
-        }
         
     }
     
@@ -54,10 +47,27 @@ class DetailViewController: UIViewController {
         userInfo.text = userData
     }
     
+    func session() {
+        viewModel.getData {
+            DispatchQueue.main.async {
+                self.reposTableView.reloadData()
+            }
+        }
+    }
+    
 }
 
 extension DetailViewController:  UISearchBarDelegate {
-
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchRepo != nil {
+            viewModel.searchItem = searchText
+           session()
+         
+        } else {
+            print("value is nil")
+        }
+    }
 }
 
 extension DetailViewController: UITableViewDataSource {
